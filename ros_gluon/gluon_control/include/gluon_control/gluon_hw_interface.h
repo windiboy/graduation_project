@@ -68,6 +68,8 @@ public:
    */
   GluonHWInterface(ros::NodeHandle& nh, urdf::Model* urdf_model = NULL);
 
+  virtual void disable_all();
+
   /** \brief Read the state from the robot hardware. */
   virtual void read(ros::Duration &elapsed_time);
 

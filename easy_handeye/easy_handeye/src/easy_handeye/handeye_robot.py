@@ -119,8 +119,8 @@ class CalibrationMovements:
             else:
                 # melodic
                 plan = ret
-            if len(plan.joint_trajectory.points) == 0 or CalibrationMovements._is_crazy_plan(plan, joint_limits):
-                return False
+            # if len(plan.joint_trajectory.points) == 0 or CalibrationMovements._is_crazy_plan(plan, joint_limits):
+            #     return False
         return True
 
     @staticmethod

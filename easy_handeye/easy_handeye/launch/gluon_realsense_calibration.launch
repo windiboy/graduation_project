@@ -3,12 +3,12 @@
     <arg name="move_group_name" default="gluon" />
 
     <!-- start the Realsense -->
-    <!-- <include file="$(find realsense2_camera)/launch/rs_camera.launch" > -->
-    <!-- </include> -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+    </include>
 
     <!-- start AprilTag -->
-    <!-- <include file="$(find apriltag_ros)/launch/continuous_detection.launch" > -->
-    <!-- </include> -->
+    <include file="$(find apriltag_ros)/launch/continuous_detection.launch" >
+    </include>
 
     <!-- start the robot -->
       <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
@@ -36,7 +36,7 @@
         <arg name="tracking_base_frame" value="camera_color_optical_frame" />
         <arg name="tracking_marker_frame" value="camera_marker" />
         <arg name="robot_base_frame" value="base_link" />
-        <arg name="robot_effector_frame" value="6_Link" />
+        <arg name="robot_effector_frame" value="fake_hand" />
 
         <arg name="freehand_robot_movement" value="false" />
         <arg name="robot_velocity_scaling" value="0.5" />

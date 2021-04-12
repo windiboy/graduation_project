@@ -43,12 +43,12 @@
 
     <!-- Start the robot backend outside the namespace, so that it can connect to a MoveGroup in the global namespace -->
     <!-- see https://github.com/ros-planning/moveit/issues/2364 -->
-    <node unless="$(arg freehand_robot_movement)" name="easy_handeye_calibration_server_robot"
+    <!-- <node unless="$(arg freehand_robot_movement)" name="easy_handeye_calibration_server_robot"
           pkg="easy_handeye"
           type="robot.py"
           output="screen" >
         <param name="calibration_namespace" value="$(arg namespace)" />
-    </node>
+    </node> -->
 
     <group ns="$(arg namespace)">
 
@@ -85,4 +85,5 @@
     <!-- start Rviz with our configuration, in the move group's namespace -->
     <node if="$(arg start_rviz)" ns="$(arg move_group_namespace)" name="$(anon rviz)" pkg="rviz" type="rviz" respawn="true"
           args="-d $(arg rviz_config_file)" output="screen" />
+
 </launch>

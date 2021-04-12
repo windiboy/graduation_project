@@ -99,6 +99,15 @@ GluonHWInterface::GluonHWInterface(ros::NodeHandle &nh, urdf::Model *urdf_model)
   ROS_INFO_NAMED("gluon_hw_interface", "GluonHWInterface Ready.");
 }
 
+void GluonHWInterface::disable_all(){
+
+  // Disable all connected actuators
+  pController->disableAllActuators();
+  // insure that all actuators have been closed
+  std::this_thread::sleep_for(std::chrono::milliseconds(200));
+  cout << "Disable success !" << endl;
+}
+
 void GluonHWInterface::read(ros::Duration &elapsed_time)
 {
   // ----------------------------------------------------
