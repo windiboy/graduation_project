@@ -14,7 +14,7 @@
         output="screen" launch-prefix="$(arg launch_prefix)"/>
 
   <!-- Load controller settings -->
-  <!-- <rosparam file="$(find gluon_control)/config/gluon_controllers.yaml" command="load"/> -->
+  <rosparam file="$(find gluon_control)/config/gluon_controllers.yaml" command="load"/>
 
   <!-- Load controller manager -->
   <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
