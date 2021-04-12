@@ -7,6 +7,9 @@ controller_list:
       - axis_joint_4
       - axis_joint_5
       - axis_joint_6
+  - name: fake_hand_controller
+    joints:
+      []
 initial:  # Define initial robot poses.
   - group: gluon
     pose: home_pose

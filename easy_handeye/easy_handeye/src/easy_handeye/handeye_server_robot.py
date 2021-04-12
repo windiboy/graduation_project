@@ -20,6 +20,9 @@ class HandeyeServerRobot:
         translation_delta = rospy.get_param('~translation_delta_meters', 0.1)
         max_velocity_scaling = rospy.get_param('~max_velocity_scaling', 0.5)
         max_acceleration_scaling = rospy.get_param('~max_acceleration_scaling', 0.5)
+        print "[Debug] HandeyeServerRobot params are :{},{},{}".format(self.parameters.move_group,
+            self.parameters.move_group_namespace,namespace)
+        self.parameters.move_group = rospy.get_param('move_group_name', "gluon")
         self.local_mover = CalibrationMovements(move_group_name=self.parameters.move_group,
                                                 move_group_namespace=self.parameters.move_group_namespace,
                                                 max_velocity_scaling=max_velocity_scaling,

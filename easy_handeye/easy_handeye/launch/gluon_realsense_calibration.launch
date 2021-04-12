@@ -1,16 +1,31 @@
 <launch>
-    <arg name="namespace_prefix" default="gluon_realsense_handeyecalibration" />
+    <arg name="namespace_prefix" default="gluon_realsense" />
+    <arg name="move_group_name" default="gluon" />
 
     <!-- start the Realsense -->
-    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
-    </include>
+    <!-- <include file="$(find realsense2_camera)/launch/rs_camera.launch" > -->
+    <!-- </include> -->
 
     <!-- start AprilTag -->
-    <include file="$(find apriltag_ros)/launch/continuous_detection.launch" >
-    </include>
+    <!-- <include file="$(find apriltag_ros)/launch/continuous_detection.launch" > -->
+    <!-- </include> -->
 
     <!-- start the robot -->
-    <include file="$(find gluon_moveit_config)/launch/ymx_demo.launch">
+      <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+    <include file="$(find gluon_moveit_config)/launch/planning_context.launch">
+        <arg name="load_robot_description" value="true"/>
+    </include>
+    <!-- Real robot connected -->
+    <include file="$(find gluon_control)/launch/gluon_control.launch">
+    </include>
+    <!-- Given the published joint states, publish tf for the robot links -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+    <include file="$(find gluon_moveit_config)/launch/move_group.launch">
+        <arg name="allow_trajectory_execution" value="true"/>
+        <arg name="fake_execution" value="false"/>
+        <arg name="info" value="true"/>
+        <arg name="debug" value="false"/>
+        <arg name="pipeline" value="ompl"/>
     </include>
 
     <!-- start easy_handeye -->
