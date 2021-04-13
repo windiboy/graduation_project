@@ -6,13 +6,13 @@ parameters:
   namespace: /gluon_realsense_eye_on_base/
   robot_base_frame: base_link
   robot_effector_frame: fake_hand
-  tracking_base_frame: camera_color_optical_frame
+  tracking_base_frame: camera_link
   tracking_marker_frame: camera_marker
 transformation:
-  qw: 0.6636604514721227
-  qx: -0.0423686623685346
-  qy: -0.7450723510848698
-  qz: 0.051253226725579464
-  x: 10.309054747047128
-  y: 0.1005304255686269
-  z: 0.5943412286473363
+  qw: 0.45507668889858727
+  qx: 0.011838813351410666
+  qy: -0.002968130583292705
+  qz: 0.8903685977842934
+  x: 0.6184085290787121
+  y: -0.34982086326109435
+  z: 0.6501874769697659

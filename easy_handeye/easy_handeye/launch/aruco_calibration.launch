@@ -1,0 +1,55 @@
+<launch>
+    <arg name="namespace_prefix" default="gluon_realsense" />
+    <arg name="move_group_name" default="gluon" />
+
+    <!-- start the Realsense -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+    </include>
+
+
+    <!-- start ArUco -->
+    <node name="aruco_tracker" pkg="aruco_ros" type="single">
+        <remap from="/camera_info" to="/camera/color/camera_info" />
+        <remap from="/image" to="/camera/color/image_raw" />
+        <param name="image_is_rectified" value="true"/>
+        <param name="marker_size"        value="0.08"/>
+        <param name="marker_id"          value="50"/>
+        <param name="reference_frame"    value="camera_link"/>
+        <param name="camera_frame"       value="camera_color_optical_frame"/>
+        <param name="marker_frame"       value="camera_marker" />
+    </node>
+
+    <!-- start the robot -->
+      <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+    <include file="$(find gluon_moveit_config)/launch/planning_context.launch">
+        <arg name="load_robot_description" value="true"/>
+    </include>
+    <!-- Real robot connected -->
+    <include file="$(find gluon_control)/launch/gluon_control.launch">
+    </include>
+    <!-- Given the published joint states, publish tf for the robot links -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+    <include file="$(find gluon_moveit_config)/launch/move_group.launch">
+        <arg name="allow_trajectory_execution" value="true"/>
+        <arg name="fake_execution" value="false"/>
+        <arg name="info" value="true"/>
+        <arg name="debug" value="false"/>
+        <arg name="pipeline" value="ompl"/>
+    </include>
+
+    <!-- start easy_handeye -->
+    <include file="$(find easy_handeye)/launch/calibrate.launch" >
+        <arg name="namespace_prefix" value="$(arg namespace_prefix)" />
+        <arg name="eye_on_hand" value="false" />
+
+        <arg name="tracking_base_frame" value="camera_link" />
+        <arg name="tracking_marker_frame" value="camera_marker" />
+        <arg name="robot_base_frame" value="base_link" />
+        <arg name="robot_effector_frame" value="fake_hand" />
+
+        <arg name="freehand_robot_movement" value="false" />
+        <arg name="robot_velocity_scaling" value="0.5" />
+        <arg name="robot_acceleration_scaling" value="0.2" />
+    </include>
+
+</launch>

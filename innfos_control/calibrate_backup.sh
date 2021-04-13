@@ -1,0 +1,1 @@
+cp ~/.ros/easy_handeye/gluon_realsense_eye_on_base.yaml arm_control/config/gluon_realsense_eye_on_base.yaml
