@@ -125,6 +125,9 @@ add_executable(${PROJECT_NAME}_single_image_client_node src/${PROJECT_NAME}_sing
 add_dependencies(${PROJECT_NAME}_single_image_client_node ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(${PROJECT_NAME}_single_image_client_node ${PROJECT_NAME}_common ${catkin_LIBRARIES})
 
+add_executable(pose_transform src/pose_transform.cpp)
+target_link_libraries(pose_transform ${PROJECT_NAME}_common ${catkin_LIBRARIES})
+
 
 #############
 ## Install ##
