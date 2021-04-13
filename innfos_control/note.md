@@ -43,3 +43,9 @@ sudo apt install openssh-server
     - aruco_calibration.launch
     - 校准完的文件在~/.ros/easy_handeyey/ 可以通过calibrate_backup.sh进行备份
     - TODO：目前还是一些误差
+2. follow done
+    - 把apriltag识别到的pose变换到base link下，控制机械臂的跟随
+    - 初步完成了跟随，但是因为校准的误差，mark和机械臂有一些误差
+3. TODO
+    - 因为plan求解默认是5s，所以规划失败的时候会卡住5s，明天看看怎么解决
+    - 另一方面可以研究一下，用路径点规划会不会好一些，可以设置末端的位姿误差，可以提高求解率
