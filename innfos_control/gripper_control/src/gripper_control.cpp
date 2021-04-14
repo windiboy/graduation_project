@@ -16,6 +16,7 @@ public:
             ROS_ERROR("[gripper_control] Failed to init smsbl motor!");
         }
         sub = nh_.subscribe("/gripper_control/int32",10,&Gripper::callback,this);
+        sm.WritePosEx(1, 2, 4000, 100);//初始化 打开夹爪
     }
     void callback(const std_msgs::Int32::ConstPtr& msg){
         int pos;

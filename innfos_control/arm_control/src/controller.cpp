@@ -41,10 +41,6 @@ int main(int argc, char** argv)
   spinner.start();
   ros::Rate loop_rate(1);
 
-  // gripper
-  center.gripper_pub.publish(center.gripper_status);
-  ROS_INFO("gripper status: %d",center.gripper_status.data);
-
   // init
   static const std::string PLANNING_GROUP = "gluon";
   moveit::planning_interface::MoveGroupInterface move_group(PLANNING_GROUP);
