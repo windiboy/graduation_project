@@ -60,32 +60,10 @@ int main(int argc, char** argv)
   
   // work flow
   while(ros::ok()){
-    // visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to go to home");
-    // std::vector<double> joint_home_positions(6, 0.0);
-    // move_group.setJointValueTarget(joint_home_positions);
-    // ROS_INFO("Go to home");
-    // move_group.move();
-
-    // Start the demo
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^
-    // visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to start the demo");
-
-    // Planning to a Pose goal
-    // ^^^^^^^^^^^^^^^^^^^^^^^
     geometry_msgs::Pose target_pose;
     target_pose = center.target;
-    // target_pose.orientation.x = 0.0;
-    // target_pose.orientation.y = 0.0;
-    // target_pose.orientation.z = 0.0;
-    // target_pose.orientation.w = 1;
     move_group.setPoseTarget(target_pose);
     std::cout << "[controller] set pose target :" << target_pose << std::endl;
-    // joint space
-    // moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
-    // std::vector<double> joint_group_positions;
-    // current_state->copyJointGroupPositions(joint_model_group, joint_group_positions);
-    // joint_group_positions[4] = 1.0;  // radians
-    // move_group.setJointValueTarget(joint_group_positions);
 
     // plan and excute
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;

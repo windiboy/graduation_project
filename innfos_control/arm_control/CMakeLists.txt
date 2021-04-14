@@ -1,5 +1,17 @@
-add_executable(controller src/controller.cpp)
-target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-install(TARGETS controller DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+set(Demo1 controller)
+set(Demo2 arm_follow_demo)
+set(Demo3 pick_item_demo)
+
+add_executable(${Demo1} src/${Demo1}.cpp)
+target_link_libraries(${Demo1} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+install(TARGETS ${Demo1} DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+add_executable(${Demo2} src/${Demo2}.cpp)
+target_link_libraries(${Demo2} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+install(TARGETS ${Demo2} DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+add_executable(${Demo3} src/${Demo3}.cpp)
+target_link_libraries(${Demo3} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+install(TARGETS ${Demo3} DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
