@@ -10,17 +10,23 @@
 
 #include <moveit_visual_tools/moveit_visual_tools.h>
 #include "geometry_msgs/Pose.h"
+#include "std_msgs/Int32.h"
 
 class ControlCenter{
 public:
     ControlCenter(){
+      gripper_status.data = 0;
+
       obj_sub = node_handle.subscribe("/tag_detections/pose",10,&ControlCenter::objectCallback,this);
+      gripper_pub = node_handle.advertise<std_msgs::Int32>("/gripper_control/int32", 1);
     }
     void objectCallback(const geometry_msgs::Pose::ConstPtr& msg){
       target = *msg;
       // std::cout << "[objectCallback] target :" << target << std::endl;
     }
     geometry_msgs::Pose target;
+    std_msgs::Int32 gripper_status;//0-打开 1-关闭
+    ros::Publisher gripper_pub;
 private:
     ros::Subscriber obj_sub;
     ros::NodeHandle node_handle;
@@ -34,6 +40,10 @@ int main(int argc, char** argv)
   ros::AsyncSpinner spinner(1);
   spinner.start();
   ros::Rate loop_rate(1);
+
+  // gripper
+  center.gripper_pub.publish(center.gripper_status);
+  ROS_INFO("gripper status: %d",center.gripper_status.data);
 
   // init
   static const std::string PLANNING_GROUP = "gluon";

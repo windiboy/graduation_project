@@ -22,4 +22,8 @@
     <!-- start the robot -->
     <include file="$(find gluon_moveit_config)/launch/cm_demo.launch">
     </include>
+
+    <!-- start the gripper -->
+    <include file="$(find innfos_control)/gripper_control/launch/gripper_control.launch">
+    </include>
 </launch>

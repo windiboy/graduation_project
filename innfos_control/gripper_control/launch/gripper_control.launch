@@ -1,0 +1,4 @@
+<launch>
+    <param name="servo_port" value="/dev/ttyUSB0" />
+    <node name="gripper_control" pkg="innfos_control" type="gripper_control"/>
+</launch>

@@ -23,6 +23,7 @@ find_package(catkin REQUIRED
     tf2_eigen
     tf2_geometry_msgs
     geometry_msgs
+    std_msgs
 )
 
 find_package(Eigen3 REQUIRED)
@@ -42,6 +43,7 @@ catkin_package(
     interactive_markers
     tf2_geometry_msgs
     geometry_msgs
+    std_msgs
   DEPENDS
     EIGEN3
 )
@@ -53,4 +55,4 @@ catkin_package(
 include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIRS})
 
 add_subdirectory(arm_control)
-
+add_subdirectory(gripper_control)
