@@ -60,4 +60,9 @@ sudo apt install openssh-server
 3. 规划求解器
     - 目前把默认的kdl求解器换成了trac_ik，求解速度提升了，不过trac_ik每次解析不唯一
     - 有时间的话看看IKFast
-    
+
+## 2021年4月16日
+
+1. end_effector_rpy_publisher
+    - 写了一个把末端姿态四元数转化为欧拉角的node，方便理解和调试
+    - 按理说四元数表示的是旋转，和位置无关，但是相同四元数在不同位置的表现却不一样，很奇怪。

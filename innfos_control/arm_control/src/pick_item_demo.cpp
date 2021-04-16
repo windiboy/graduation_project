@@ -110,22 +110,13 @@ int main(int argc, char** argv)
     place_pose.position.x -= 0.1;
     place_pose.position.y += 0.1;
     place_waypoints.push_back(place_pose);
-    place_pose.position.z -= 0.1;
+    // place_pose.position.z -= 0.1;
     // place_pose.orientation.x = -0.634;
     // place_pose.orientation.y = -0.185;
     // place_pose.orientation.z = -0.152;
     // place_pose.orientation.w = 0.735;
-    std::cout << "orignal orientation: " << place_pose.orientation << std::endl;
-
-    tf::Quaternion quat;
-    tf::quaternionMsgToTF(place_pose.orientation, quat);
-    double roll, pitch, yaw;//定义存储r\p\y的容器
-    tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);//进行转换
-    std::cout << "roll, pitch, yaw: " << roll*360/3.14 <<", "<< pitch*360/3.14 <<", "<< yaw*360/3.14 <<", "<< std::endl;
-    place_pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(roll, -10*3.14/360, yaw);//返回四元数
-    std::cout << "final orientation: " << place_pose.orientation << std::endl;
-
-    place_waypoints.push_back(place_pose);
+    // place_pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(-1.4947092699756912, -0.06103559622438079, 0.03911419498015126);//返回四元数
+    // place_waypoints.push_back(place_pose);
 
     move_group.setMaxVelocityScalingFactor(0.2);
     moveit_msgs::RobotTrajectory place_trajectory;
