@@ -66,3 +66,11 @@ sudo apt install openssh-server
 1. end_effector_rpy_publisher
     - 写了一个把末端姿态四元数转化为欧拉角的node，方便理解和调试
     - 按理说四元数表示的是旋转，和位置无关，但是相同四元数在不同位置的表现却不一样，很奇怪。
+2. track_ik solver type 
+    ```python
+    % The type can be one of the following: 
+    % Speed: returns very quickly the first solution found
+    % Distance: runs for the full timeout_in_secs, then returns the solution that minimizes SSE from the seed
+    % Manip1: runs for full timeout, returns solution that maximizes sqrt(det(J*J^T))
+    % Manip2: runs for full timeout, returns solution that minimizes cond(J) = |J|*|J^-1|
+    ```
