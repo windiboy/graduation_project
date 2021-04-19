@@ -32,3 +32,9 @@ gluon_controller:
       - axis_joint_4
       - axis_joint_5
       - axis_joint_6
+gripper_controller:
+    action_ns: gripper_action
+    default: True
+    type: GripperCommand
+    joints:
+      - hand_joint

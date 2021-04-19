@@ -1,6 +1,7 @@
 set(Demo1 controller)
 set(Demo2 arm_follow_demo)
 set(Demo3 pick_item_demo)
+set(Demo4 pick_item_demo_v2)
 set(Function1 end_effector_rpy_publisher)
 
 add_executable(${Demo1} src/${Demo1}.cpp)
@@ -14,6 +15,10 @@ install(TARGETS ${Demo2} DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 add_executable(${Demo3} src/${Demo3}.cpp)
 target_link_libraries(${Demo3} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS ${Demo3} DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+add_executable(${Demo4} src/${Demo4}.cpp)
+target_link_libraries(${Demo4} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+install(TARGETS ${Demo4} DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 add_executable(${Function1} src/${Function1}.cpp)
 target_link_libraries(${Function1} ${catkin_LIBRARIES} ${Boost_LIBRARIES})

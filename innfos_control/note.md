@@ -74,3 +74,15 @@ sudo apt install openssh-server
     % Manip1: runs for full timeout, returns solution that maximizes sqrt(det(J*J^T))
     % Manip2: runs for full timeout, returns solution that minimizes cond(J) = |J|*|J^-1|
     ```
+
+## 2021年4月18日
+
+1. rm机械臂实现了定点拉开抽屉
+2. 接下来进展方向
+    - 抓取物体位姿研究
+    - 门把手识别 所里训练模型
+    - 写论文
+
+## 2021年4月19日
+
+1. 
