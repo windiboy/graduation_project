@@ -25,6 +25,7 @@ find_package(catkin REQUIRED
     geometry_msgs
     std_msgs
     control_msgs
+    actionlib
 )
 
 find_package(Eigen3 REQUIRED)
@@ -46,6 +47,7 @@ catkin_package(
     geometry_msgs
     std_msgs
     control_msgs
+    actionlib
   DEPENDS
     EIGEN3
 )
