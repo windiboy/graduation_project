@@ -1,15 +1,20 @@
 <launch>
     <!-- start the Realsense -->
-    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+    <!-- <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
         <arg name="enable_pointcloud" default="false"/> 
-    </include>
+    </include> -->
+    <rosparam command="load" file="$(find innfos_control)/arm_control/config/innfos.yaml" />
+
+    <node name="camera_transform_node" pkg="innfos_control" type="camera_transform.py"/>
+    <!-- 45度时使用 并把child_frame=camera_base -->
+    <!-- <node name="camera_base_transform_node" pkg="innfos_control" type="camera_base_transform.py"/> -->
 
     <!-- start AprilTag -->
     <include file="$(find apriltag_ros)/launch/continuous_detection.launch" >
     </include>
 
     <!--publish hand-eye calibration-->
-    <arg name="eye_on_hand" default="false" />
+    <!-- <arg name="eye_on_hand" default="false" />
     <group ns="gluon_realsense_eye_on_base">
         <param name="eye_on_hand" value="$(arg eye_on_hand)" />
         <param unless="$(arg eye_on_hand)" name="robot_base_frame" value="base_link" />
@@ -17,7 +22,7 @@
         <param name="tracking_base_frame" value="" />
         <param name="inverse" value="false" />
         <node name="$(anon handeye_publisher)" pkg="easy_handeye" type="publish.py" output="screen"/>
-    </group>
+    </group> -->
 
 
     <!-- start the robot -->
