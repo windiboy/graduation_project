@@ -59,11 +59,11 @@ int main(int argc, char** argv)
   std::cout << "[open_door]" << target_pose_params.size() << std::endl;
   for(size_t i = 0; i<target_pose_params.size(); ++i)
   {
-    orientation.setRPY(target_pose_params[i]["R"], target_pose_params[i]["P"], target_pose_params[i]["Y"]);
+    orientation.setRPY(target_pose_params[i]["orientation_r"], target_pose_params[i]["orientation_p"], target_pose_params[i]["orientation_y"]);
     target_pose.orientation = tf2::toMsg(orientation);
-    target_pose.position.x = target_pose_params[i]["x"];
-    target_pose.position.y = target_pose_params[i]["yy"];
-    target_pose.position.z = target_pose_params[i]["z"];
+    target_pose.position.x = target_pose_params[i]["pos_x"];
+    target_pose.position.y = target_pose_params[i]["pos_y"];
+    target_pose.position.z = target_pose_params[i]["pos_z"];
   }
   std::cout << "[open_door]" << target_pose << std::endl;
 

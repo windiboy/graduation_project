@@ -4,6 +4,10 @@
         <arg name="enable_pointcloud" default="false"/> 
     </include> -->
     <rosparam command="load" file="$(find innfos_control)/arm_control/config/innfos.yaml" />
+    <include file="$(find rplidar_ros)/launch/rplidar.launch" >
+    <node name="plat_node_1" pkg="innfos_control" type="platform_control.py"/>
+    <node name="plat_node_2" pkg="innfos_control" type="platform_control"/>
+
 
     <node name="camera_transform_node" pkg="innfos_control" type="camera_transform.py"/>
     <!-- 45度时使用 并把child_frame=camera_base -->

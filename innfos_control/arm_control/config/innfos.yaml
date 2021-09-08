@@ -1,8 +1,11 @@
 servo_port: "/dev/ttyUSB1"
+paltform_port: "/dev/ttyUSB2"
 target_pose:
-   - x: 0.27
-     yy: 0.0
-     z: 0.3
-     R: 1.57
-     P: 0
-     Y: 0
+   - pos_x: 0.27
+     pos_y: 0.0
+     pos_z: 0.3
+     orientation_r: 1.57
+     orientation_p: 0.0
+     orientation_y: 0.0
+dis_min: 1.0
+dis_max: 1.2
